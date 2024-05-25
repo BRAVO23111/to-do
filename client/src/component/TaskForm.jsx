@@ -17,7 +17,7 @@ const TaskForm = () => {
     const fetchTask = async () => {
       try {
         if (id) {
-          const response = await axios.get(`http://localhost:3000/task/${id}`);
+          const response = await axios.get(`https://to-do-2391.onrender.com/task/${id}`);
           setTask(response.data);
         }
       } catch (error) {
@@ -37,10 +37,10 @@ const TaskForm = () => {
     e.preventDefault();
     try {
       if (id) {
-        await axios.put(`http://localhost:3000/task/${id}`, task);
+        await axios.put(`https://to-do-2391.onrender.com/task/${id}`, task);
         alert("Task updated successfully");
       } else {
-        await axios.post("http://localhost:3000/task", task);
+        await axios.post("https://to-do-2391.onrender.com/task", task);
         alert("Task created successfully");
       }
       navigate("/");

@@ -10,7 +10,7 @@ const TaskList = () => {
   useEffect(() => {
     const fetchTasks = async () => {
       try {
-        const response = await axios.get('http://localhost:3000/task');
+        const response = await axios.get('https://to-do-2391.onrender.com/task');
         setTasks(response.data);
       } catch (error) {
         console.error('Error fetching tasks:', error);
@@ -22,7 +22,7 @@ const TaskList = () => {
 
   const deleteTask = async (id) => {
     try {
-      await axios.delete(`http://localhost:3000/task/${id}`);
+      await axios.delete(`https://to-do-2391.onrender.com/task/${id}`);
       setTasks(tasks.filter(task => task._id !== id));
     } catch (error) {
       console.error('Error deleting task:', error);
