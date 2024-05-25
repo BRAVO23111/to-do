@@ -8,11 +8,25 @@ dotenv.config()
 
 const app = express();
 
-app.use(cors({
-    origin : "https://to-do-silk-three.vercel.app/",
-    methods : ["GET", "POST" ,"PUT","DELETE"],
-    credentials :true
-}));
+
+const allowedOrigins = [
+    'https://to-do-silk-three.vercel.app',
+    'http://localhost:5173'
+  ];
+  
+  const corsOptions = {
+    origin: function (origin, callback) {
+      if (!origin || allowedOrigins.includes(origin)) {
+        callback(null, true);
+      } else {
+        callback(new Error('Not allowed by CORS'));
+      }
+    },
+    methods: ["GET", "POST", "PUT", "DELETE"],
+    credentials: true
+  };
+  
+  app.use(cors(corsOptions));
 app.use(express.json())
 try {
     const db = mongoose.connect(process.env.MONGO_URI)
