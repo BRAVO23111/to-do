@@ -9,7 +9,7 @@ dotenv.config()
 const app = express();
 
 app.use(cors({
-    origin : "https://to-do-silk-three.vercel.app/",
+    origin : ["https://to-do-silk-three.vercel.app"],
     methods : ["GET", "POST" ,"PUT","DELETE"],
     credentials :true
 }));
